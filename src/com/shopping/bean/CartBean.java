@@ -2,7 +2,7 @@ package com.shopping.bean;
 
 public class CartBean
 {
-	//Comment Added By Sameer
+	
 	private Integer cartId; 
 	private String userName;
 	private Double totalPrice;
