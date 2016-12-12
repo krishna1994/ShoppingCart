@@ -2,6 +2,7 @@ package com.shopping.bean;
 
 public class CartBean
 {
+	
 	private Integer cartId; 
 	private String userName;
 	private Double totalPrice;
