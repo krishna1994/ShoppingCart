@@ -23,7 +23,6 @@ public class ProductFacade {
 		{
 			return ShoppingConstants.INVALID_PRODUCT;
 		}
-		System.out.println("ProductFacade class");
 		return new ProductBusinessLayer().productDetailsGetter(productBean);
 
 	}

@@ -3,9 +3,15 @@
  */
 package com.shopping.test.facade;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
+import java.sql.SQLException;
 
 import org.junit.Test;
+
+import com.shopping.bean.ProductBean;
+import com.shopping.constants.ShoppingConstants;
+import com.shopping.facade.ProductFacade;
 
 /**
  * @author singhkri
@@ -14,12 +20,17 @@ import org.junit.Test;
 public class productFacadeTest
 {
 
-	/**
-	 * Test method for {@link com.shopping.facade.ProductFacade#verifyProduct(com.shopping.bean.ProductBean)}.
-	 */
+	
 	@Test
-	public final void testVerifyProduct() {
-		fail("Not yet implemented"); // TODO
+	public final void testVerifyProduct() throws SQLException
+	{
+		
+			ProductFacade productFacade =new ProductFacade();
+			ProductBean productBean ;
+			productBean = new ProductBean();
+			productBean = null;
+			assertEquals(ShoppingConstants.INVALID_PRODUCT,productFacade.verifyProduct(productBean));
+		
 	}
 
 }
