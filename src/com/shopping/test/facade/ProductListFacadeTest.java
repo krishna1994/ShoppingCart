@@ -17,7 +17,7 @@ import com.shopping.facade.ProductListFacade;
  * @author singhkri
  *
  */
-public class ProductListFacadeTest {
+public class productListFacadeTest {
 
 	
 	/**
