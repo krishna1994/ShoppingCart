@@ -13,7 +13,8 @@ import com.shopping.dao.ProductDAO;
  * @author singhkri
  *
  */
-public class ProductBusinessLayer {
+public class ProductBusinessLayer 
+{
 
 	ResultSet resultSet = null;
 

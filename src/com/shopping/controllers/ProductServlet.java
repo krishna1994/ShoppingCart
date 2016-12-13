@@ -19,29 +19,28 @@ import com.shopping.facade.ProductFacade;
 public class ProductServlet extends HttpServlet
 {
 
-	public ProductServlet() {
+	public ProductServlet() 
+	{
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 	//using doPost method to pass values
 	{
-		//		System.out.println(request.getParameter("productId"));
 		String productId = request.getParameter("productId");	// 
 		ProductBean productBean = new ProductBean() ; 	//creating object of productBean
 		productBean.setProductId(productId); 
 		ProductFacade productFacade = new ProductFacade();
-		try {
+		try 
+		{
 			productBean=productFacade.verifyProduct(productBean);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} 
+		catch (SQLException e) 
+		{
 			e.printStackTrace();
 		}
 		request.setAttribute("productBean",productBean ); 
 		request.getRequestDispatcher("ProductDetails.jsp").forward(request, response);
-
-
-
 
 
 
