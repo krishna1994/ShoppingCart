@@ -39,7 +39,7 @@ public class ProductListBusinessLayerTest {
 	public final void testProductDetailsGetter() throws SQLException {
 		ResultSet resultSet=null; 
 		
-		assertEquals(null, productListBusinessLayer.productListSet());
+		assertEquals(products, productListBusinessLayer.productListSet());
 		
 		
 	}
