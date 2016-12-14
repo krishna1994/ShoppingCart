@@ -39,10 +39,10 @@ public class productDaoTest {
 	@Mock
 	PreparedStatement preparedStatement;
 	
+
 	
 	@Before
 	public void setUp() throws SQLException {
-		
 		MockitoAnnotations.initMocks(this);
 		Mockito.when(dbConnection.createConnection()).thenReturn(connection);
 		Mockito.when(resultSet.next()).thenReturn(true, true, true, false);
@@ -54,7 +54,8 @@ public class productDaoTest {
 	}
 
 	@Test
-	public void testProductListGetter() throws Exception {
+	public void testProductListGetter() throws Exception 
+	{
 		
 		ResultSet productList  = productDAO.productListGetter();
         assertEquals(productList.next(), true);
@@ -67,4 +68,6 @@ public class productDaoTest {
 		
 		
 	}
+	
+
 }
