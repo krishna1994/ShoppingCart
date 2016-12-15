@@ -26,10 +26,10 @@ public class ProductListBusinessLayer {
 		while (resultSet.next())
 		{
 			ProductBean productBean = new ProductBean();
-			productBean.setProductId(resultSet.getString("productId"));	//Setting resultSet productId into ProductBean's productId
-			productBean.setProductName(resultSet.getString("productName"));	//Setting resultSet productName into ProductBean's productName
-			productBean.setUnitPrice(resultSet.getDouble("unitPrice"));	//Setting resultSet unitPrice into ProductBean's unitPrice
-			products.add(productBean);	//
+			productBean.setProductId(resultSet.getString("productId"));		//Setting resultSet productId into ProductBean's productId
+			productBean.setProductName(resultSet.getString("productName"));		//Setting resultSet productName into ProductBean's productName
+			productBean.setUnitPrice(resultSet.getDouble("unitPrice"));		//Setting resultSet unitPrice into ProductBean's unitPrice
+			products.add(productBean);		//Add to list
 		}
 		
 		return products;
