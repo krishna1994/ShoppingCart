@@ -15,10 +15,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
-import com.shopping.bean.LoginBean;
 import com.shopping.bean.ProductBean;
 import com.shopping.businesslayer.ProductBusinessLayer;
-import com.shopping.constants.ShoppingConstants;
 import com.shopping.controllers.ProductServlet;
 import com.shopping.facade.ProductFacade;
 
