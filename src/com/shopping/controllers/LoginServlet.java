@@ -25,16 +25,16 @@ public class LoginServlet extends HttpServlet
 	/**
 	 * 
 	 */
-	
+
 	private LoginFacade loginFacade = new LoginFacade();
 
 	public LoginServlet() 
 	{
-		
+
 	}
 
-	
-	
+
+
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 	//using doPost method to pass values
 	{
 		System.out.println("Request");
@@ -47,17 +47,23 @@ public class LoginServlet extends HttpServlet
 
 		loginBean.setUsername(username); 	//Using setter method of LoginBean class to set value of username.
 		loginBean.setPassword(password);	//Using setter method of LoginBean class to set value of password.
-		
-		 
+
+
 		ProductListFacade productListFacade = new ProductListFacade();
 		List<ProductBean> products = null;
-		
-		String userValidate =  loginFacade.verifyLogin(loginBean);  	//Passing loginBean object to verifyLogin function of LoginFacade class.
+
+		String userValidate = null;
+		try {
+			userValidate = loginFacade.verifyLogin(loginBean);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}  	//Passing loginBean object to verifyLogin function of LoginFacade class.
 		System.out.println("User Validate: "+userValidate);
 		if(userValidate.equals(ShoppingConstants.SUCCESS))	//If  userValidate gives "SUCCESS" redirect to home.jsp 
 		{
 
-			
+
 			try 
 			{
 				products = productListFacade.productsCheck();

@@ -1,7 +1,3 @@
-
-/**
- * 
- */
 package com.shopping.businesslayer;
 
 import java.sql.ResultSet;
@@ -35,4 +31,3 @@ public class ProductBusinessLayer {
 	}
 
 }
-

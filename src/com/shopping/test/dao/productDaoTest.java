@@ -48,8 +48,6 @@ public class productDaoTest {
 		Mockito.when(resultSet.next()).thenReturn(true, true, true, false);
 		Mockito.when(connection.prepareStatement(Mockito.anyString())).thenReturn(preparedStatement);
 		Mockito.when(preparedStatement.executeQuery()).thenReturn(resultSet);
-		
-
 	
 	}
 
@@ -63,31 +61,8 @@ public class productDaoTest {
         assertEquals(productList.next(), true);
         assertEquals(productList.next(), false);
 
-       
         Mockito.verify(preparedStatement.executeQuery(), Mockito.times(1));
-		
-		
+				
 	}
-	
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
