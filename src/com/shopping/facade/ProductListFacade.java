@@ -16,13 +16,13 @@ import com.shopping.businesslayer.ProductListBusinessLayer;
 public class ProductListFacade 
 {
 	ProductListBusinessLayer productListBusinessLayer = null; 
-
+	ProductBean productBean;
 
 	public List<ProductBean> productsCheck() throws SQLException 
 	{
 		productListBusinessLayer = new ProductListBusinessLayer(); 	//Calling ProductListBusinessLayer class 
 
-		List<ProductBean> products = productListBusinessLayer.productListSet(); 	//Getting List from ProductBusinessLayer
+		List<ProductBean> products = productListBusinessLayer.productListSet(productBean); 	//Getting List from ProductBusinessLayer
 		
 		return products;
 	}

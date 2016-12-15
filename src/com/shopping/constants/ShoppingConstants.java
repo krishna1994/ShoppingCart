@@ -19,6 +19,7 @@ public class ShoppingConstants {
 	public static ProductBean INVALID_PRODUCT ;
 	public static final Object list= null;
 	public static final Object SUCCESS_LIST = "list Success";
+	public static final Object INVALID_LIST = null;
 	
 
 }

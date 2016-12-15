@@ -1,4 +1,4 @@
- package com.shopping.test.facade;
+package com.shopping.test.facade;
 import static org.junit.Assert.assertEquals;
 
 import java.sql.SQLException;

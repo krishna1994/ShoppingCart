@@ -12,7 +12,7 @@ import com.shopping.dao.ProductDAO;
  */
 public class ProductBusinessLayer {
 
-	ResultSet resultSet = null; //Refrence to ResultSet is deleted
+	ResultSet resultSet = null; //Reference to ResultSet is deleted
 
 
 	public ProductBean productDetailsGetter(ProductBean productBean) throws SQLException 

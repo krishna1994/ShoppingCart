@@ -7,11 +7,14 @@ import static org.junit.Assert.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
 import com.shopping.bean.ProductBean;
 import com.shopping.businesslayer.ProductListBusinessLayer;
@@ -22,19 +25,23 @@ import com.shopping.businesslayer.ProductListBusinessLayer;
  */
 public class ProductListBusinessLayerTest 
 {
-
-	ProductListBusinessLayer productListBusinessLayer ;
-	List<ProductBean> products;
-	ProductBean productBean;
+	@Mock
 	ResultSet resultSet;
+	
+	@InjectMocks
+	ProductListBusinessLayer productListBusinessLayer;
+
+	
 
 	@Before
-	public void setup()
+	public void setup() throws SQLException 
 	{
-		productListBusinessLayer =new ProductListBusinessLayer();
-		products = new ArrayList<ProductBean>();
-		productBean=new ProductBean();
-
+		MockitoAnnotations.initMocks(this);
+		Mockito.when(resultSet.next()).thenReturn(true,true,false);
+		Mockito.when(resultSet.getString("productId"))
+		.thenReturn("A001")
+		.thenReturn("A002");
+		
 	}
 	/**
 	 * Test method for {@link com.shopping.businesslayer.ProductBusinessLayer#productDetailsGetter(com.shopping.bean.ProductBean)}.
@@ -43,29 +50,10 @@ public class ProductListBusinessLayerTest
 	@Test
 	public void testProductDetailsGetter() throws Exception 
 	{
-		productBean.setProductId(null);
-		assertEquals(null,productBean.getProductId());
-		productBean.setProductId("A001");
-		assertEquals("A001",productBean.getProductId());
-
-		productBean.setProductName(null);
-		assertEquals(null,productBean.getProductName());
-		productBean.setProductName("Mobile");
-		assertEquals("Mobile",productBean.getProductName());
-		
-		productBean.setUnitPrice(null);
-		assertEquals(null, productBean.getUnitPrice());
-		productBean.setUnitPrice(15000.0);
-		//assertEquals(15000.0, productBean.getUnitPrice());
-		
-		
-		productBean.setDescription(null);
-		assertEquals(null,productBean.getDescription());
-		productBean.setDescription("Redmi Note 3 (16Gb)");
-		assertEquals("Redmi Note 3 (16Gb)",productBean.getDescription());
-	
-		//assertEquals(products,productListBusinessLayer.productListSet());
-
+		List<ProductBean> products=productListBusinessLayer.productListSet(new ProductBean());
+		assertEquals(products.size(),2);
+		assertEquals(products.get(0), "A001");
+        assertEquals(products.get(1), "A002");
 
 
 	}
