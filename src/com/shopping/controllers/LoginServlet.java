@@ -64,7 +64,7 @@ public class LoginServlet extends HttpServlet
 			} 
 			catch (SQLException e) 
 			{
-				e.printStackTrace();
+				request.getRequestDispatcher("error.jsp").forward(request, response);
 			}
 			request.setAttribute("products", products); 
 			request.getRequestDispatcher("ProductList.jsp").forward(request, response);
