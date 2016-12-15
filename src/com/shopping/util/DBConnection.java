@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 
 public class DBConnection {
 
-	public static Connection createConnection() //Function to create connection
+	public static  Connection createConnection() //Function to create connection
 	{
 		Connection con = null;		// Free up the connection resource
 		String url = "jdbc:mysql://localhost:3306/shoppingcart";  // jdbc connection string url

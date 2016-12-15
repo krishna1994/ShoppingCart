@@ -37,7 +37,7 @@ public class ProductServlet extends HttpServlet
 		} 
 		catch (SQLException e) 
 		{
-			e.printStackTrace();
+			request.getRequestDispatcher("error.jsp").forward(request, response);
 		}
 		request.setAttribute("productBean",productBean ); 
 		request.getRequestDispatcher("ProductDetails.jsp").forward(request, response);

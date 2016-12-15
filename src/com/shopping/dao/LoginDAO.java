@@ -10,24 +10,16 @@ import com.shopping.util.DBConnection;
 
 
 public class LoginDAO {
-
-
+	ResultSet resultSet=null;
+	Connection con =null;
 	//To authenticate if given username and password combination is correct by querying in database
-	public String authenticateUser(LoginBean loginBean)  	//Passing loginBean object to authenticateUser() function
+	public ResultSet authenticateUser(LoginBean loginBean)  	//Passing loginBean object to authenticateUser() function
 	{
-
 
 
 		String username = loginBean.getUsername(); 		// Taking username value from loginBean and setting it in new string username . 
 		String password = loginBean.getPassword();		// Taking password value from loginBean and setting it in new string password.
-		if(username == null || username.isEmpty())		// if username is null or is empty
-		{
-			return ShoppingConstants.INVALID_CREDENTIALS;	
-		}
-		else if(password == null || password.isEmpty())	// if password is null or is empty then return .
-		{
-			return ShoppingConstants.INVALID_CREDENTIALS; 
-		}
+		
 
 		Connection con = DBConnection.createConnection();		
 
@@ -40,18 +32,8 @@ public class LoginDAO {
 			st.setString(2, password);	//setting second value in preparedStatement
 
 
-			ResultSet r1=st.executeQuery();	//Saving result of Executed Query.
-			while(r1.next())	// Shifts the cursor to the next row of the result set from the database and returns true if there is any row, otherwise false
-			{	
-				if(r1.getInt("total")>0)	//If obtained result value is greater then 0 print success.
-				{
-					return ShoppingConstants.SUCCESS;
-				}
-				else	
-				{
-					return ShoppingConstants.INVALID_CREDENTIALS;
-				}
-			}
+			resultSet=st.executeQuery();	//Saving result of Executed Query.
+			
 
 		}
 		catch(SQLException e)
@@ -65,6 +47,6 @@ public class LoginDAO {
 				e1.printStackTrace();
 			}
 		}
-		return ShoppingConstants.INVALID_CREDENTIALS; 
+		return resultSet; 
 	}
 }
