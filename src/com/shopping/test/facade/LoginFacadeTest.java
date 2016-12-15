@@ -15,7 +15,8 @@ import com.shopping.facade.LoginFacade;
  * @author singhkri
  *
  */
-public class LoginFacadeTest {
+public class LoginFacadeTest 
+{
 
 
 

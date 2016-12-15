@@ -21,9 +21,10 @@ public class LoginBusinessLayerTest {
 
 	/**
 	 * Test method for {@link com.shopping.businesslayer.LoginBusinessLayer#validateLogin(com.shopping.bean.LoginBean)}.
+	 * @throws Exception 
 	 */
 	@Test
-	public final void validateLoginTest() 
+	public final void validateLoginTest() throws Exception 
 	{
 		LoginBusinessLayer loginBusinessLayer =new LoginBusinessLayer();
 		LoginBean loginBean = null;

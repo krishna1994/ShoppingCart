@@ -13,9 +13,8 @@ import com.shopping.constants.ShoppingConstants;
  * @author singhkri
  *
  */
-public class ProductFacade {
-
-
+public class ProductFacade
+{
 
 	public  ProductBean verifyProduct(ProductBean productBean) throws SQLException 
 	{
@@ -23,7 +22,6 @@ public class ProductFacade {
 		{
 			return ShoppingConstants.INVALID_PRODUCT;
 		}
-		System.out.println("ProductFacade class");
 		return new ProductBusinessLayer().productDetailsGetter(productBean);
 
 	}

@@ -23,4 +23,7 @@ public class LoginFacade
 		return new LoginBusinessLayer().validateLogin(loginBean);	//Passing values to validateLogin function of LoginBusinessLayer class
 
 	}
+	
+	
+	
 }

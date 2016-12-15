@@ -18,19 +18,19 @@ import com.shopping.facade.ProductFacade;
 @WebServlet("/ProductServlet")
 public class ProductServlet extends HttpServlet
 {
-
+	ProductFacade productFacade = new ProductFacade();
+	
 	public ProductServlet() 
 	{
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 	//using doPost method to pass values
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 	//using doPost method to pass values
 	{
 		String productId = request.getParameter("productId");	// 
 		ProductBean productBean = new ProductBean() ; 	//creating object of productBean
 		productBean.setProductId(productId); 
-		ProductFacade productFacade = new ProductFacade();
+	//	ProductFacade productFacade = new ProductFacade();
 		try 
 		{
 			productBean=productFacade.verifyProduct(productBean);
