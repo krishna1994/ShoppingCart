@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import com.shopping.bean.LoginBean;
-import com.shopping.constants.ShoppingConstants;
 import com.shopping.util.DBConnection;
 
 
@@ -19,7 +19,7 @@ public class LoginDAO {
 
 		String username = loginBean.getUsername(); 		// Taking username value from loginBean and setting it in new string username . 
 		String password = loginBean.getPassword();		// Taking password value from loginBean and setting it in new string password.
-		
+
 
 		Connection con = DBConnection.createConnection();		
 
@@ -33,7 +33,7 @@ public class LoginDAO {
 
 
 			resultSet=st.executeQuery();	//Saving result of Executed Query.
-			
+
 
 		}
 		catch(SQLException e)

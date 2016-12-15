@@ -1,10 +1,4 @@
-
-
-/**
- * 
- */
 package com.shopping.test.facade;
-
 import static org.junit.Assert.assertEquals;
 
 import java.sql.SQLException;
@@ -19,8 +13,17 @@ import com.shopping.facade.ProductListFacade;
  * @author singhkri
  *
  */
-public class ProductListFacadeTest
+public class ProductListFacadeTest 
 {
+	ProductListFacade productListFacade;
+	ProductBean productBean ;
+	
+	public void setup() 
+	{
+		productListFacade =new ProductListFacade();
+		productBean = new ProductBean();
+
+	}
 
 	
 	/**
@@ -28,12 +31,10 @@ public class ProductListFacadeTest
 	 * @throws SQLException 
 	 */
 	@Test
-	public final void productsCheckTest() throws SQLException 
-	{
-		ProductListFacade productListFacade =new ProductListFacade();
-		ProductBean productBean =new ProductBean();
-		
-		assertEquals(ShoppingConstants.INVALID_LIST ,productListFacade.productsCheck());
+	public void productsCheckTest() throws SQLException
+	{ 
+		productBean=null;
+		assertEquals(null ,productListFacade.productsCheck());
 
 		productBean.setProductId("A001");
 		productBean.setProductName("Mobile");
@@ -45,4 +46,3 @@ public class ProductListFacadeTest
 	}
 
 }
-
