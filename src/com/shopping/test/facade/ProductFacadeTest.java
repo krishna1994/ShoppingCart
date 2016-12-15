@@ -1,17 +1,9 @@
-/**
- * 
- */
+
 package com.shopping.test.facade;
 
-import static org.junit.Assert.*;
-
-import java.sql.SQLException;
-
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-
 import com.shopping.bean.ProductBean;
-import com.shopping.businesslayer.ProductBusinessLayer;
-import com.shopping.constants.ShoppingConstants;
 import com.shopping.facade.ProductFacade;
 
 /**
