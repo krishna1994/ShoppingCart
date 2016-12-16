@@ -65,7 +65,7 @@ public class LoginServlet extends HttpServlet
 
 
 			try 
-			{
+			{	System.out.println("in loginservlet");
 				products = productListFacade.productsCheck();
 			} 
 			catch (SQLException e) 

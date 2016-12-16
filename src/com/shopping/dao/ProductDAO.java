@@ -31,8 +31,9 @@ public class ProductDAO {
 
 		}
 		System.out.println("DAO:"+resultSet.toString());
-
 		return resultSet;
+		
+
 	}
 
 
