@@ -1,13 +1,45 @@
 package com.shopping.dao;
 
-import com.shopping.bean.CartItemsBean;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class CartItemsDAO {
+import com.shopping.util.DBConnection;
 
-	public  Object addItems(CartItemsBean cartItemsbean)
+public class CartItemsDAO 
+{
+	Connection con = null;		//  Reference to connection object is deleted
+	PreparedStatement preparedStatement = null;		//Reference to Preparedstatement object is deleted
+	ResultSet resultSet = null;		 //Refrence to ResultSet object is deleted
+	int i;
+
+	public  int addItems() throws SQLException
 	{
-		// TODO Auto-generated method stub
-		return null;
+		try 
+		{
+			con = DBConnection.createConnection();	 // calling createConnection of DBConnectuion class in con
+			String query="insert into";
+			preparedStatement = con.prepareStatement(query);	//query to be executed
+			i=preparedStatement.executeUpdate();
+
+
+
+		}
+		finally
+		{
+
+			//				con.close();		//closing connection
+
+		}
+		System.out.println(" CartItems DAO:"+resultSet.toString());
+
+
+
+		return i;
 	}
+	
+	
+	 
 
 }
