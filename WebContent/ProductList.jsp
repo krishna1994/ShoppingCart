@@ -1,3 +1,4 @@
+<%@page import="com.shopping.bean.LoginBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
@@ -11,7 +12,13 @@
 
 
 	</center>
-
+<% 
+if(session.getAttribute("username")!=null)
+{ 
+String username=(String)session.getAttribute("username"); 
+out.print("Welcome  "+username); 
+} 
+%> 
 
 
 	<table border="2px" cellpadding="5px">
