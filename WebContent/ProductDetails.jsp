@@ -14,28 +14,36 @@
 		<h2>Product Detail</h2>
 
 	</center>
-
+	<% 
+if(session.getAttribute("username")!=null)
+{ 
+String username=(String)session.getAttribute("username"); 
+out.print("Welcome  "+username); 
+} 
+%> 
 
 	<form name="form1" action="AddToCartServlet" method="post">
-		<table border="2px" cellpadding="5px" height="100" width="800">
+		<table border="2px" cellpadding="5px" height="100" width="1000">
 
-			<tr bgcolor="red">
+			<tr>
 				<th>Product ID</th>
 				<th>Product Name</th>
 				<th>Price</th>
+				
 				<th>About Product</th>
+				<th>Quantity</th>
 
 
 			</tr>
 
 
-			<%-- <c:forEach var="productBean" items="${productBean}"> --%>
 			<tr>
-				<%-- <td><a href="ProductServlet?productId=${product.productId}">${product.productId}</a></td> --%>
+
 				<td>${productBean.productId}</td>
 				<td>${productBean.productName}</td>
 				<td>${productBean.unitPrice}</td>
 				<td>${productBean.description}</td>
+				<td><input type="text" name="quantity"/></td>
 				<td><input type="submit" value="AddToCart"></input></td>
 
 
