@@ -20,6 +20,7 @@ public class ProductListBusinessLayer
 	ResultSet resultSet = null;
 	ProductDAO productDAO=new ProductDAO();
 	
+	
 	public List<ProductBean> productListSet() throws SQLException 	//Creating  List type function
 	{			
 
@@ -34,7 +35,7 @@ public class ProductListBusinessLayer
 			productBean.setProductName(resultSet.getString("productName"));		//Setting resultSet productName into ProductBean's productName
 			productBean.setUnitPrice(resultSet.getDouble("unitPrice"));		//Setting resultSet unitPrice into ProductBean's unitPrice
 			products.add(productBean);		                             //Add to list
-			System.out.println("In productlistbusinesslayer2.....");
+	
 
 		}
 		System.out.println("In productlistbusinesslayer");

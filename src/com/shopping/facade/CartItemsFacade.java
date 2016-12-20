@@ -14,7 +14,7 @@ public class CartItemsFacade
 	public String getCartItems() throws Exception
 	{
 		
-		return new CartItemsBusinessLayer().verifyCartItems();
+		return new CartItemsBusinessLayer().verifyInsertCartItems();
 	}
 	
 

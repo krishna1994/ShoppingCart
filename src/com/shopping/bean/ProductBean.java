@@ -6,6 +6,7 @@ public class ProductBean
 	private String productName;
 	private Double unitPrice;
 	private String description;
+	
 	/**
 	 * @return the productId
 	 */

@@ -14,8 +14,8 @@ public class CartDAO
 
 	
 
-	public String validateOrder(CartBean cartbean) {
-		// TODO Auto-generated method stub
+	public String validateOrder(CartBean cartbean)
+	{
 		return "";
 	}
 

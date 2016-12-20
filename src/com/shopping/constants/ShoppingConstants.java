@@ -20,6 +20,8 @@ public class ShoppingConstants {
 	public static final Object list= null;
 	public static final Object SUCCESS_LIST = "list Success";
 	public static final Object INVALID_LIST = null;
+	public static final String FAIL = "Fail";                        //assigning constant value to INVALID_CREDENTIALS string
+
 	
 
 }

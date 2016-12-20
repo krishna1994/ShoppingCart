@@ -54,12 +54,12 @@ public class ProductBusinessLayerTest
 	{
 		
 		
-		ProductBean Product = productBusinessLayer.productDetailsGetter(new ProductBean());
+		ProductBean product = productBusinessLayer.productDetailsGetter((ProductBean)Mockito.anyObject());
         
-        assertEquals(Product.getProductId(), "A001");
-        assertEquals(Product.getProductName(), "Mobile");
-        assertEquals(Product.getUnitPrice(), "15000.0");
-        assertEquals(Product.getDescription(), "Redmi Note 3");
+        assertEquals(product.getProductId(), "A001");
+        assertEquals(product.getProductName(), "Mobile");
+        assertEquals(product.getUnitPrice(), "15000.0");
+        assertEquals(product.getDescription(), "Redmi Note 3");
 
 
 	}

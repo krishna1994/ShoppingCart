@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.shopping.bean.LoginBean;
 import com.shopping.bean.ProductBean;
@@ -72,6 +73,9 @@ public class LoginServlet extends HttpServlet
 			{
 				request.getRequestDispatcher("error.jsp").forward(request, response);
 			}
+			HttpSession session = request.getSession();
+	        session.setAttribute("username", username);
+
 			request.setAttribute("products", products); 
 			request.getRequestDispatcher("ProductList.jsp").forward(request, response);
 		}

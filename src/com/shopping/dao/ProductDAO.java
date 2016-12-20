@@ -11,7 +11,7 @@ import com.shopping.util.DBConnection;
 public class ProductDAO {
 
 	Connection con = null;		//  Reference to connection object is deleted
-	PreparedStatement statement = null;		//Refrence to Preparedstatement object is deleted
+	PreparedStatement statement = null;		//Reference to Preparedstatement object is deleted
 	ResultSet resultSet = null;		 //Refrence to ResultSet object is deleted
 
 	public  ResultSet productListGetter() 

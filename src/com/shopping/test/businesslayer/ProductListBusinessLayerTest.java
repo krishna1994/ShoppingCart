@@ -50,7 +50,7 @@ public class ProductListBusinessLayerTest
 	@Test
 	public void testProductDetailsGetter() throws Exception 
 	{
-		List<ProductBean> products=productListBusinessLayer.productListSet(new ProductBean());
+		List<ProductBean> products=productListBusinessLayer.productListSet();
 		assertEquals(products.size(),2);
 		assertEquals(products.get(0), "A001");
         assertEquals(products.get(1), "A002");

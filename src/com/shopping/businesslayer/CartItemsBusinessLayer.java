@@ -1,5 +1,6 @@
 package com.shopping.businesslayer;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.shopping.constants.ShoppingConstants;
@@ -7,7 +8,8 @@ import com.shopping.dao.CartItemsDAO;
 
 public class CartItemsBusinessLayer 
 {
-	public String verifyCartItems() throws SQLException
+	ResultSet resultSet = null;                                         //Reference to ResultSet is deleted
+	public String verifyInsertCartItems() throws SQLException
 	{
 		CartItemsDAO cartItemsDAO=new CartItemsDAO();
 		int i=cartItemsDAO.addItems();
@@ -17,6 +19,18 @@ public class CartItemsBusinessLayer
 		}
 		return ShoppingConstants.FAIL;
 	}
+	
+	public String selectcartItems() throws Exception
+	{
+		resultSet=new CartItemsDAO().showcartItems();
+		while(resultSet.next())
+		{
+			
+			
+		}
+		return ShoppingConstants.SUCCESS;
+	}
+	
 	
 
 }
