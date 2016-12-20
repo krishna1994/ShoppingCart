@@ -18,6 +18,13 @@ if(session.getAttribute("username")!=null)
 String username=(String)session.getAttribute("username"); 
 out.print("Welcome  "+username); 
 } 
+else
+{
+	String username=(String)session.getAttribute("username"); 
+	out.print("Welcome  "+username); 
+	out.print("qwkwafnlkeqnfleqnfkqe"); 
+	//out.print("not set"); 
+}
 %> 
 
 
