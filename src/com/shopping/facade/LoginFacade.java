@@ -3,6 +3,8 @@
  */
 package com.shopping.facade;
 
+import java.sql.SQLException;
+
 import com.shopping.bean.LoginBean;
 import com.shopping.businesslayer.LoginBusinessLayer;
 import com.shopping.constants.ShoppingConstants;
@@ -14,8 +16,9 @@ import com.shopping.constants.ShoppingConstants;
 public class LoginFacade
 {
 
-	public String verifyLogin(LoginBean loginBean)	//Passing loginBean object to verifyLogin function.
+	public String verifyLogin(LoginBean loginBean) throws SQLException	//Passing loginBean object to verifyLogin function.
 	{	
+		//new LoginBusinessLayer().validateLogin(loginBean);
 		if(loginBean == null)	//Condition that should occur if loginBean has no value in it.
 		{
 			return ShoppingConstants.INVALID_CREDENTIALS;	//If loginBean is null return "invalid credentials"
@@ -23,4 +26,7 @@ public class LoginFacade
 		return new LoginBusinessLayer().validateLogin(loginBean);	//Passing values to validateLogin function of LoginBusinessLayer class
 
 	}
+	
+	
+	
 }

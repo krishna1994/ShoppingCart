@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.shopping.bean.LoginBean;
 import com.shopping.bean.ProductBean;
@@ -16,14 +17,27 @@ import com.shopping.facade.LoginFacade;
 import com.shopping.facade.ProductListFacade;
 
 @WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet
+{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	HttpSession session;
+	/**
+	 * 
+	 */
 
-	public LoginServlet() {
+	private LoginFacade loginFacade = new LoginFacade();
+
+	public LoginServlet() 
+	{
+
 	}
 
-	
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 	//using doPost method to pass values
+
+
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 	//using doPost method to pass values
 	{
 		System.out.println("Request");
 
@@ -35,23 +49,36 @@ public class LoginServlet extends HttpServlet {
 
 		loginBean.setUsername(username); 	//Using setter method of LoginBean class to set value of username.
 		loginBean.setPassword(password);	//Using setter method of LoginBean class to set value of password.
-		
-		LoginFacade loginFacade = new LoginFacade(); //creating object of loginFacade
+
+
 		ProductListFacade productListFacade = new ProductListFacade();
 		List<ProductBean> products = null;
-		String userValidate =  loginFacade.verifyLogin(loginBean);  	//Passing loginBean object to verifyLogin function of LoginFacade class.
+
+		String userValidate = null;
+		try {
+			userValidate = loginFacade.verifyLogin(loginBean);
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}  	//Passing loginBean object to verifyLogin function of LoginFacade class.
 		System.out.println("User Validate: "+userValidate);
 		if(userValidate.equals(ShoppingConstants.SUCCESS))	//If  userValidate gives "SUCCESS" redirect to home.jsp 
 		{
 
-//			request.setAttribute("username", username); 
-			
-			try {
+
+			try 
+			{	System.out.println("in loginservlet");
 				products = productListFacade.productsCheck();
-			} catch (SQLException e) {
-				e.printStackTrace();
+			} 
+			catch (SQLException e) 
+			{
+				request.getRequestDispatcher("error.jsp").forward(request, response);
 			}
 			request.setAttribute("products", products); 
+			session= request.getSession(true);
+			
+			session.setAttribute("username",username);
+			System.out.println(session.getAttribute("username"));
 			request.getRequestDispatcher("ProductList.jsp").forward(request, response);
 		}
 

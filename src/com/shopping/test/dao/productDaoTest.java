@@ -1,3 +1,4 @@
+
 package com.shopping.test.dao;
 
 import static org.junit.Assert.assertEquals;
@@ -14,18 +15,17 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import com.mysql.jdbc.PreparedStatement;
-import com.shopping.bean.LoginBean;
-import com.shopping.dao.LoginDAO;
+import com.shopping.dao.ProductDAO;
 import com.shopping.util.DBConnection;
 
 /**
  * @author singhkri
  *
  */
-public class LoginDAOTest {
+public class productDaoTest {
 
 	@InjectMocks 
-	LoginDAO loginDAO;
+	ProductDAO productDAO;
 
 	@Mock 
 	DBConnection dbConnection;
@@ -38,38 +38,31 @@ public class LoginDAOTest {
 	
 	@Mock
 	PreparedStatement preparedStatement;
+	
 
-	
-	
-	
 	
 	@Before
-	public void setUp() throws SQLException 
-	{
+	public void setUp() throws SQLException {
 		MockitoAnnotations.initMocks(this);
-		
 		Mockito.when(dbConnection.createConnection()).thenReturn(connection);
-		Mockito.when(resultSet.next()).thenReturn(true, false);
+		Mockito.when(resultSet.next()).thenReturn(true, true, true, false);
 		Mockito.when(connection.prepareStatement(Mockito.anyString())).thenReturn(preparedStatement);
 		Mockito.when(preparedStatement.executeQuery()).thenReturn(resultSet);
-		//Mockito.when(loginDAO.authenticateUser((LoginBean)Mockito.anyObject())).thenReturn(resultSet);
-
-
 	
 	}
 
 	@Test
-	public void testAuthenticateUser() throws Exception 
+	public void testProductListGetter() throws Exception 
 	{
-		ResultSet loginSet  = loginDAO.authenticateUser(new LoginBean());
-        assertEquals(loginSet.next(), true);
-        assertEquals(loginSet.next(), false);
+		
+		ResultSet productList  = productDAO.productListGetter();
+        assertEquals(productList.next(), true);
+        assertEquals(productList.next(), true);
+        assertEquals(productList.next(), true);
+        assertEquals(productList.next(), false);
 
-       
         Mockito.verify(preparedStatement.executeQuery(), Mockito.times(1));
-		
-		
+				
 	}
-	
-
 }
+

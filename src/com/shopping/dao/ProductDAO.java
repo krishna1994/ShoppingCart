@@ -31,19 +31,21 @@ public class ProductDAO {
 
 		}
 		System.out.println("DAO:"+resultSet.toString());
-
 		return resultSet;
+		
+
 	}
 
 
-	public  ResultSet productGetter(ProductBean productBean) throws SQLException {
+	public  ResultSet productGetter(ProductBean productBean) throws SQLException 
+	{
 
 		try {
 			String productId = productBean.getProductId();	//Assigning value of productId of productBean in string productId 
 			con = DBConnection.createConnection();		// calling createConnection of DBConnectuion class in con
 			statement = con.prepareStatement("SELECT ProductId, ProductName, UnitPrice,Description FROM productdetails where ProductId = ?");		//query to be executed
 			statement.setString(1,  productId); 
-			resultSet = statement.executeQuery();	//saving execured query resultSet
+			resultSet = statement.executeQuery();	//saving executed query resultSet
 
 
 		}
@@ -51,7 +53,7 @@ public class ProductDAO {
 		{
 			//con.close();		//closing connection
 		}
-		
+
 		return resultSet;
 
 	}

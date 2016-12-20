@@ -7,42 +7,56 @@ import static org.junit.Assert.*;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 
-import com.shopping.bean.LoginBean;
 import com.shopping.bean.ProductBean;
-import com.shopping.businesslayer.LoginBusinessLayer;
 import com.shopping.businesslayer.ProductListBusinessLayer;
-import com.shopping.constants.ShoppingConstants;
 
 /**
  * @author singhkri
  *
  */
-public class ProductListBusinessLayerTest {
+public class ProductListBusinessLayerTest 
+{
+	@Mock
+	ResultSet resultSet;
+	
+	@InjectMocks
+	ProductListBusinessLayer productListBusinessLayer;
 
-	ProductListBusinessLayer productListBusinessLayer ;
-  @Before
-   public void setup()
-   {
-		ProductListBusinessLayer productListBusinessLayer =new ProductListBusinessLayer();
+	
 
-   }
+	@Before
+	public void setup() throws SQLException 
+	{
+		MockitoAnnotations.initMocks(this);
+		Mockito.when(resultSet.next()).thenReturn(true,true,false);
+		Mockito.when(resultSet.getString("productId"))
+		.thenReturn("A001")
+		.thenReturn("A002");
+		
+	}
 	/**
 	 * Test method for {@link com.shopping.businesslayer.ProductBusinessLayer#productDetailsGetter(com.shopping.bean.ProductBean)}.
 	 * @throws SQLException 
 	 */
 	@Test
-	public final void testProductDetailsGetter() throws SQLException {
-		ResultSet resultSet=null; 
-		
-		assertEquals(null, productListBusinessLayer.productListSet());
-		
-		
+	public void testProductDetailsGetter() throws Exception 
+	{
+		List<ProductBean> products=productListBusinessLayer.productListSet(new ProductBean());
+		assertEquals(products.size(),2);
+		assertEquals(products.get(0), "A001");
+        assertEquals(products.get(1), "A002");
+
+
 	}
-	
+
 
 }
