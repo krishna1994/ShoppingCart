@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.shopping.bean.CartItemsBean;
 import com.shopping.util.DBConnection;
 
 public class CartItemsDAO 
@@ -13,14 +14,18 @@ public class CartItemsDAO
 	PreparedStatement preparedStatement = null;		//Reference to Preparedstatement object is deleted
 	ResultSet resultSet = null;		 //Reference to ResultSet object is deleted
 	int i;
-
+	CartItemsBean cartItemsBean=new CartItemsBean();
 	public  int addItems() throws SQLException
 	{
+		int quantity=cartItemsBean.getQuantity();
 		try 
 		{
 			con = DBConnection.createConnection();	 // calling createConnection of DBConnectuion class in con
-			String query="insert into cartitems(ProductId, Quantity, ItemPrice) values(?,?,?)";
+			String query="insert into cartitems(username,productId, quantity) values(?,?,?)";
 			preparedStatement = con.prepareStatement(query);	//query to be executed
+			preparedStatement.setString(1, "username");
+			preparedStatement.setString(2,"productId" );
+			preparedStatement.setInt(3, quantity);
 			i=preparedStatement.executeUpdate();
 		}
 		finally
