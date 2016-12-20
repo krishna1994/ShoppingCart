@@ -15,11 +15,16 @@
 
 	</center>
 	<% 
-if(session.getAttribute("username")!=null)
-{ 
-String username=(String)session.getAttribute("username"); 
-out.print("Welcome  "+username); 
-} 
+	if(session.getAttribute("username")!=null)
+	{ 
+	String username=(String)session.getAttribute("username"); 
+	out.print("Welcome  "+username); 
+	} 
+	else
+	{
+		
+		out.print("not set"); 
+	}
 %> 
 
 	<form name="form1" action="AddToCartServlet" method="post">
@@ -43,7 +48,7 @@ out.print("Welcome  "+username);
 				<td>${productBean.productName}</td>
 				<td>${productBean.unitPrice}</td>
 				<td>${productBean.description}</td>
-				<td><input type="text" name="quantity"/></td>
+				<td><input type="number" name="quantity"/></td>
 				<td><input type="submit" value="AddToCart"></input></td>
 
 

@@ -23,6 +23,7 @@ public class LoginServlet extends HttpServlet
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	HttpSession session;
 	/**
 	 * 
 	 */
@@ -77,6 +78,10 @@ public class LoginServlet extends HttpServlet
 	        session.setAttribute("username", username);
 
 			request.setAttribute("products", products); 
+			session= request.getSession(true);
+			
+			session.setAttribute("username",username);
+			System.out.println(session.getAttribute("username"));
 			request.getRequestDispatcher("ProductList.jsp").forward(request, response);
 		}
 
