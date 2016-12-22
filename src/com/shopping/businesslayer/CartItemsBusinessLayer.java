@@ -3,16 +3,31 @@ package com.shopping.businesslayer;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.shopping.bean.CartItemsBean;
 import com.shopping.constants.ShoppingConstants;
 import com.shopping.dao.CartItemsDAO;
 
 public class CartItemsBusinessLayer 
 {
-	ResultSet resultSet = null;                                         //Reference to ResultSet is deleted
+	CartItemsBean cartItemsBean=new CartItemsBean();
+	ResultSet resultSet = null;   //Reference to ResultSet is deleted
+	
+	CartItemsDAO cartItemsDAO=new CartItemsDAO();
+	
+	public ResultSet verifyCartId() throws Exception
+	{
+		resultSet=cartItemsDAO.checkCartId();
+		while(resultSet.next())
+		{
+			return resultSet;
+
+		}
+		return null;
+	}
 	public String verifyInsertCartItems() throws SQLException
 	{
-		CartItemsDAO cartItemsDAO=new CartItemsDAO();
-		int i=cartItemsDAO.addItems();
+		
+		int i=cartItemsDAO.addItems(cartItemsBean);
 		if(i!=0)
 		{
 			return ShoppingConstants.SUCCESS;
@@ -25,7 +40,9 @@ public class CartItemsBusinessLayer
 		resultSet=new CartItemsDAO().showcartItems();
 		while(resultSet.next())
 		{
-			
+			cartItemsBean.setProductId(resultSet.getString("productId"));
+			cartItemsBean.setQuantity(resultSet.getInt("quantity"));
+			cartItemsBean.setItemPrice(resultSet.getDouble("itemPrice"));
 			
 		}
 		return ShoppingConstants.SUCCESS;
